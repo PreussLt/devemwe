@@ -15,6 +15,26 @@
             href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&display=swap"
             rel="stylesheet"
     />
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Selektiere die wichtigen Elemente
+            const bottomSection = document.querySelector(".bottom");
+            const overlay = document.querySelector(".fullpage-overlay");
+            const closeBtn = document.querySelector(".close-btn");
+
+            // 1) Hover auf .bottom öffnet das Overlay
+            bottomSection.addEventListener("mouseover", () => {
+                overlay.classList.remove("hidden");
+            });
+
+            // 2) Nur per X-Symbol schließen
+            closeBtn.addEventListener("click", () => {
+                overlay.classList.add("hidden");
+            });
+        });
+
+    </script>
+
 </head>
 <body>
 
@@ -61,26 +81,27 @@
 </header>
 
 <!-- Mittiger Textbereich -->
-<div class="centered-text">
-    <h1>Emelie Brucker</h1>
-</div>
+
 
 <!-- Hauptinhalt -->
+<section class="left">
+    <h2>Willkommen auf meiner Seite</h2>
+    <p>
+        Ich komme aus der Nähe der wunderschönen Stadt Heidelberg und bin dieses
+        Semester nach München gezogen. In meiner Freizeit mache ich gerne Sport –
+        oder wie auf den Bildern rechts zu sehen: Sushi, Musik und meine
+        fotografierten Bilder auf Lightroom bearbeiten. Abgesehen davon koche ich
+        gerne, gehe wandern oder treffe meine Freunde. Ein weiteres großes
+        Interessensgebiet von mir ist die Medizin. Coding gehört tatsächlich eher
+        weniger zu meinen Lieblingstätigkeiten.
+    </p>
+    <div class="centered-text">
+        <h1>Emelie Brucker</h1>
+    </div>
+</section>
+
 <main>
     <!-- Linker Bereich (Text über mich) -->
-    <section class="left">
-        <h2>Willkommen auf meiner Seite</h2>
-        <p>
-            Ich komme aus der Nähe der wunderschönen Stadt Heidelberg und bin dieses
-            Semester nach München gezogen. In meiner Freizeit mache ich gerne Sport –
-            oder wie auf den Bildern rechts zu sehen: Sushi, Musik und meine
-            fotografierten Bilder auf Lightroom bearbeiten. Abgesehen davon koche ich
-            gerne, gehe wandern oder treffe meine Freunde. Ein weiteres großes
-            Interessensgebiet von mir ist die Medizin. Coding gehört tatsächlich eher
-            weniger zu meinen Lieblingstätigkeiten.
-        </p>
-    </section>
-
     <section class="right">
 
         <!-- 1. Flip-Container -->
@@ -92,7 +113,7 @@
                 </div>
                 <!-- Rückseite (Text) -->
                 <div class="flip-back">
-                    <p>Hier erfährst du mehr über mein selbstgemachtes Sushi!</p>
+                    <p>Hier erfährst du mehr über Sushi!</p>
                 </div>
             </div>
         </div>
@@ -127,26 +148,36 @@
 
 </main>
 
-<!-- Unterer Bereich (Snapchat) -->
+
+<!-- Unten: Snapchat-Bereich (als Beispiel) -->
 <section class="bottom">
     <div class="snapchat-icon">
-        <img
-                src="../images/snapchat.png"
-                alt="Snapchat Icon in gelber Farbe"
-        />
+        <img src="../images/snapchat.png" alt="Snapchat Icon" />
     </div>
     <div class="snapchat-text">
-        <h2>Snapchat</h2>
-        <p>
+        <h1 >Snapchat</h1>
+    </div>
+
+    <!-- Overlay (anfangs hidden) -->
+    <div class="fullpage-overlay hidden">
+        <div class="overlay-content">
+            <!-- X-Schließen-Button oben rechts -->
+            <button class="close-btn">&times;</button>
+            <img src="../images/snapchat.png" alt="Snapchat Icon" />
+            <h1>Lieblingsapp</h1>
+            <p><p>
             Meine Lieblingsapp ist Snapchat. Ich habe hier nur wenige Freunde und
             Familie und freue mich immer wieder, kleine Einblicke in das Leben meiner
             Lieblingsmenschen zu gewinnen. Auf Snapchat bleibt man sehr einfach in
             Kontakt. Man fühlt sich verbunden, ohne immer telefonieren oder schreiben
             zu müssen. Besonders über Snaps von meiner kleinen Schwester freue ich mich
             immer sehr.
-        </p>
+        </p>.</p>
+        </div>
     </div>
 </section>
+
+
 
 </body>
 </html>
