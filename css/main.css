@@ -20,7 +20,7 @@ body {
    füllt den Bildschirm und zentriert die Kreise.
 */
 .circle-container {
-    position: relative;
+    position: absolute;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -35,31 +35,36 @@ body {
    - Abgerundete Ecken => Kreisform
    - overflow: hidden => das Bild wird kreisförmig beschnitten
    - transform: translate(-50%, -50%) => absolutes Zentrieren
-   - KEIN box-shadow, KEINE transitions
 */
 .circle {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 150px;
-    height: 150px;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     overflow: hidden;
     transform: translate(-50%, -50%);
+
+    /* position: relative für Overlay und Text */
+    position: relative;
 }
 
 /*
    Jeder Kreis bekommt ein Link mit einem Bild.
    Das Bild füllt den Kreis aus (object-fit: cover).
-   Border für einen kleinen weißen Rand.
+   Kleiner weißer Rand um das Bild.
+   + Transition für spätere Spiegelung.
 */
 .circle a {
     display: block;
     width: 100%;
     height: 100%;
     text-decoration: none;
+    position: relative;
 }
 
+/* Das Bild mit Übergang für die Spiegelung */
 .circle a img {
     display: block;
     width: 100%;
@@ -68,77 +73,135 @@ body {
     border: 3px solid #fff;
     box-sizing: border-box;
     border-radius: 50%;
+    transition: transform 0.5s ease; /* Weiche Spiegelung */
+}
+
+/* Text im Kreis */
+.circle a .circle-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+    z-index: 2; /* Sicherstellen, dass der Text über dem Overlay liegt */
+    pointer-events: none; /* Text ist nicht klickbar */
 }
 
 /*
-   Tooltip per data-name:
-   - Wir setzen ::after auf content: attr(data-name)
-   - Das Tooltip wird beim Hover angezeigt
-   - OHNE Übergangseffekte (keine transition)
+   Pseudo-Element für schwarze Overlay bei Hover:
+   - ::before deckt den Kreis ab
+   - Anfangs unsichtbar, auf Hover halbtransparent schwarz
+*/
+.circle::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.0);    /* Anfang: unsichtbar */
+    transition: background 0.5s ease; /* Weicher Übergang */
+    pointer-events: none;             /* Maus ignoriert das Overlay */
+}
+
+/*
+   Hover-Effekte:
+   1. Bild wird horizontal gespiegelt
+   2. Overlay wird halbtransparent schwarz
+*/
+.circle:hover a img {
+    transform: scaleX(-1); /* Horizontale Spiegelung */
+}
+
+.circle:hover::before {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.circle::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.0);    /* Anfang: unsichtbar */
+    transition: background 0.5s ease; /* Weicher Übergang */
+    pointer-events: none;             /* Maus ignoriert das Overlay */
+}
+
+/*
+   Pseudo-Element für den Namen (Tooltip):
+   - ::after zeigt data-name an
+   - Standardmäßig unsichtbar
 */
 .circle[data-name]::after {
     content: attr(data-name);
     position: absolute;
-    bottom: calc(100% + 5px); /* Zeigt das Tooltip oberhalb des Kreises */
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    background: #000;
+    transform: translate(-50%, -50%);
     color: #fff;
-    padding: 5px 8px;
-    border-radius: 4px;
-    white-space: nowrap;
     font-size: 0.9rem;
     font-weight: bold;
-
-    /* Standard: Unsichtbar */
-    opacity: 0;
-    pointer-events: none;
+    opacity: 0;              /* Versteckt */
+    transition: opacity 0.5s ease;
+    pointer-events: none;    /* Tooltip soll die Maus nicht blocken */
 }
 
 /*
-   Beim Hover wird das Tooltip eingeblendet
-   - Ohne Übergang (blinkt einfach an/aus)
+   Wenn man mit der Maus über den Kreis geht:
+   1. Bild wird horizontal gespiegelt
+   2. Overlay wird halbtransparent schwarz
+   3. Name wird eingeblendet
 */
+.circle:hover a img {
+    transform: scaleX(-1); /* Horizontale Spiegelung */
+}
+
+.circle:hover::before {
+    background: rgba(0, 0, 0, 0.5);
+}
+
 .circle[data-name]:hover::after {
     opacity: 1;
 }
 
 /*
    Anordnung der Kreise in einem unsichtbaren Kreis
-   - Hier definieren wir für jeden Kreis den Winkel.
-   - Die 5 Kreise haben jeweils 72° Abstand (360° / 5).
+   - transform: rotate(...) + translate(...) + rotate(...)
+   - 5 Kreise => 72° Abstand pro Kreis
 */
 .circle-1 {
-    transform: translate(-50%, -50%)
-    rotate(0deg)
-    translate(300px)
-    rotate(-0deg);
+    position: fixed;
+    top: 20%;
+    left: 50%;
 }
 
 .circle-2 {
-    transform: translate(-50%, -50%)
-    rotate(72deg)
-    translate(300px)
-    rotate(-72deg);
+    position: fixed;
+    top: 45%;
+    left: 30%;
 }
 
 .circle-3 {
-    transform: translate(-50%, -50%)
-    rotate(144deg)
-    translate(300px)
-    rotate(-144deg);
+    position: fixed;
+    top: 45%;
+    left: 70%;
 }
 
 .circle-4 {
-    transform: translate(-50%, -50%)
-    rotate(216deg)
-    translate(300px)
-    rotate(-216deg);
+    position: fixed;
+    top: 80%;
+    left: 40%;
 }
 
 .circle-5 {
-    transform: translate(-50%, -50%)
-    rotate(288deg)
-    translate(300px)
-    rotate(-288deg);
+    position: fixed;
+    top: 80%;
+    left: 60%;
 }
