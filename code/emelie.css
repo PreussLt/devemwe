@@ -353,3 +353,15 @@ main {
 .hidden {
     display: none !important;
 }
+
+#typewriter {
+    white-space: pre;
+    font-family: 'Bonheur Royale', cursive;
+    font-size: 6rem;
+    color: var(--accent2-color); /* Abweichender Farbton zum Hervorheben */
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0px;
+}
+
+
