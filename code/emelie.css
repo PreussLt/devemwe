@@ -210,3 +210,74 @@ main {
     margin: 0;
     line-height: 1.4;
 }
+
+/* Der Container, in dem sich alles abspielt */
+.right {
+    display: flex;
+    gap: 15px;
+    flex: 3; /* Damit der Bereich 3x so breit ist wie deine .left? */
+    /* Optional: max-width, margin, etc. je nach Layout */
+}
+
+/* Erzeugt die 3D-Perspektive */
+.flip-container {
+    width: 250px;          /* Passe an, falls du andere Dimensionen willst */
+    height: 550px;         /* Höhe anpassen */
+    perspective: 1000px;   /* Wichtig: "Tiefe" für 3D-Effekt */
+    border-radius: 8px;
+    overflow: hidden;      /* Damit nichts herausragt */
+
+    /* Optional, damit die Flip-Container sich gleichmäßig verteilen */
+    flex: 1;
+}
+
+/* Das innere Element, das rotiert */
+.flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d; /* 3D-Stil beibehalten */
+}
+
+/* Effekt: Bei Hover dreht sich das Innere 180 Grad */
+.flip-container:hover .flip-inner {
+    transform: rotateY(180deg);
+}
+
+/* Vorderseite und Rückseite nehmen den gesamten Platz ein */
+.flip-front, .flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Verhindert ein "Spiegeln" */
+    top: 0;
+    left: 0;
+    border-radius: 8px;
+    overflow: hidden;     /* Bild/Text ragt nicht über die Ränder hinaus */
+}
+
+/* Vorderseite zeigt das Bild */
+.flip-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Rückseite mit Text, um 180 Grad gedreht */
+.flip-back {
+    transform: rotateY(180deg);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    display: flex;              /* Zentrierter Text */
+    justify-content: center;    /* Horizontal */
+    align-items: center;        /* Vertikal */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Beispiel-Textstyle für die Rückseite */
+.flip-back p {
+    font-size: 1rem;
+    margin: 0;
+}
