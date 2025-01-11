@@ -1,121 +1,134 @@
-/* Allgemeine Stilsetzung */
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: rgb(148, 219, 164); /* Neue Hintergrundfarbe */
-    color: #333; /* Textfarbe */
-    margin: 0;
-    padding: 0;
+/* ==============================
+   1) CSS-Variablen definieren
+   ============================== */
+:root {
+    --background-color: rgb(148, 219, 164); /* Grüner Grundton */
+    --text-color: #333;
+    --accent1-color: #4caf50;
+    --accent2-color: #8bc34a;
 }
 
+/* ==============================
+   2) Allgemeine Stilsetzung
+   ============================== */
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 60px; /* Platz für fixierte Navbar */
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Box-Sizing global */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Google Fonts für Bonheur Royale */
-@import url('https://fonts.googleapis.com/css2?family=Bonheur+Royale&display=swap');
-
-/* Navigationsleiste */
-/** Navigationsleiste**/
-nav > ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	flex-direction: column;
-	position: relative;
-    border: 1px;
-    border-color: #4caf50;
+/* ==============================
+   NAVBAR
+   ============================== */
+.navbar {
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    z-index: 9999; /* Über anderen Elementen */
+    height: 60px;  /* Höhe der Navbar (s. body-padding-top) */
 }
 
-nav li {
-	padding: 0;
-	font-size: 1.5rem;
-	flex: 1 1 0%;
+/* Standard-Links in der Navbar */
+.navbar a {
+    height: 100%;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
-@media (min-width: 45em) {
-	nav > ul {
-		flex-direction: row;
-		height: 3em;
-	}
-	nav li {
-        background-color:  #366436 ;
-		flex: 1;
-		font-size: 1em;
-	}
+/* Hover-Effekt für die Navbar-Links */
+.navbar a:hover {
+    background-color: #ddd;
+    color: #000;
 }
 
-nav a {
-	display: block;
-	padding: 0.4em;
-	text-decoration: none;
-	font-weight: bold;
-	text-align: center;
-	border: thin solid var(--background-color);
-	border-radius: .5em;
-	color: white;
-	background-color: var(--background-color);
-	transition: all .25s ease-in;
-	position: relative;
+/* Dropdown-Container */
+.dropdown {
+    position: relative; /* Damit .dropdown-content sich daran orientiert */
 }
 
-nav li[aria-current] a {
-	background-color: var(--accent2-color);
-	color: var(--accent1-color);
+/* Button, der das Dropdown auslöst */
+.dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: #f2f2f2;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit; /* Vererbt vom .navbar */
+    margin: 0;
+    cursor: pointer;
 }
 
-nav .subtitle::after {
-	position: absolute;
-	content: " ▶";
-	color: currentColor;
-	display: inline-block;
-	width: 2em;
-	right: 0;
+/* Versteckter Dropdown-Inhalt */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* Wichtig: direkt unter dem Button statt fixer px-Angabe */
+    left: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 9999;
 }
 
-nav .subtitle:hover::after,
-nav .subtitle:focus::after {
-	content: " ▼";
+/* Links im Dropdown */
+.dropdown-content a {
+    margin: 0;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    color: #000;
+    text-align: left;
 }
 
-nav a:focus,
-nav a:hover,
-nav li[aria-current] a:focus,
-nav li[aria-current] a:hover {
-	color: var(--background-color);
-	background-color: var(--accent1-color);
-}
-/*     submenu navigation links      */
-
-nav .submenu {
-	visibility: hidden;
-	height: 0;
-	z-index: 1000;
+.dropdown-content a:hover {
+    background-color: #ddd;
 }
 
-nav .submenu li {
-	display: block;
-	/* width: 15em; */
-}
-/**     Show the submenu on hover, focus     **/
-
-nav li:hover .submenu,
-nav li:active .submenu,
-nav li:focus .submenu {
-	visibility: visible;
-	height: auto;
+/* Dropdown anzeigen, wenn man drüber hovert */
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
-nav li:focus-within .submenu {
-	visibility: visible;
-	height: auto;
+/* Markierung der "aktuellen Seite" */
+[aria-current="page"] {
+    background-color: var(--accent1-color);
+    color: #fff !important;
 }
 
+/* ==============================
+   MITTIGER TEXTBEREICH
+   ============================== */
+.centered-text h1 {
+    font-family: 'Bonheur Royale', cursive;
+    font-size: 6rem;
+    color: #366436; /* Abweichender Farbton zum Hervorheben */
+    font-weight: bold;
+    text-align: center;
+    margin: 100px 0 50px;
+}
 
-
-/* Hauptinhalt */
+/* ==============================
+   HAUPTINHALT
+   ============================== */
 main {
     display: flex;
     justify-content: space-between;
@@ -123,28 +136,23 @@ main {
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
-    gap: 20px; /* Einheitlicher Abstand zwischen linker/rechter Sektion */
+    gap: 20px; /* Einheitlicher Abstand */
 }
 
-/* Linker Bereich (Text über mich) */
+/* Linker Bereich (Text) */
 .left {
-    flex: 1; /* Nimmt den verfügbaren Platz */
+    flex: 1;
     background-color: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-    /* Höhe entfernt, damit Text nicht abgeschnitten wird */
-    /* height: 200px; */
-    /* Kein display: flex; => Text fließt normal */
-
     text-align: center;
 }
 
 .left h2 {
     font-size: 20px;
     color: #28a745;
-    margin-top: 0; /* Damit es nicht zu weit runterrückt */
+    margin-top: 0;
 }
 
 .left p {
@@ -152,11 +160,11 @@ main {
     line-height: 1.5;
 }
 
-/* Bilder */
+/* Rechter Bereich (Bilder) */
 .right {
     display: flex;
-    gap: 15px; /* Abstand zwischen den Bildern */
-    flex: 3;   /* Bilder nehmen mehr Platz ein */
+    gap: 15px;
+    flex: 3; /* Bilder nehmen mehr Platz ein */
 }
 
 .right .image-box {
@@ -164,8 +172,6 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-
-
 }
 
 .right img {
@@ -175,26 +181,15 @@ main {
     object-fit: cover;
 }
 
-/* Zentrierter Textbereich (Titel) */
-.centered-text h1 {
-    font-family: 'Bonheur Royale', cursive;
-    font-size: 6rem;
-    color: #366436;
-    font-weight: bold;
-    text-align: center;
-    margin: 100px 0 50px;
-}
-
-/* Snapchat Bereich */
+/* ==============================
+   UNTERER BEREICH (Snapchat)
+   ============================== */
 .bottom {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    padding: 40px 20px; /* Abstände oben/unten, links/rechts */
-
-    /* Entfernt, damit es nicht den ganzen Viewport blockiert */
-    /* height: 100vh; */
+    padding: 40px 20px;
 }
 
 .snapchat-icon img {
@@ -214,107 +209,4 @@ main {
     color: #333;
     margin: 0;
     line-height: 1.4;
-}
-
-
-/* neuer Header Code */
-/* Navbar-Container */
-/* Entferne standardmäßige Abstände */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-
-    /* Verhindert, dass der Inhalt hinter der fixierten Navbar verschwindet.
-       Höhe der Navbar = 60px (s. u.). */
-    padding-top: 60px;
-}
-
-/* Container für die Navbar */
-.navbar {
-    padding: 0px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    display: flex;
-    align-items: center;
-    z-index: 9999;  /* Damit die Navbar über anderen Elementen liegt */
-    height: 60px;   /* Höhe der Navbar – wichtig auch für das body-padding */
-
-}
-
-/* Standardlinks in der Navbar */
-.navbar a {
-    height: 100%;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-/* Hover-Effekt für die Links */
-.navbar a:hover {
-    background-color: #ddd;
-    color: #000;
-}
-
-/* Dropdown-Container */
-.dropdown {
-    position: relative; /* Für die absolute Positionierung des Dropdown-Inhalts */
-}
-
-/* Button, der das Dropdown auslöst */
-.dropbtn {
-    font-size: 16px;
-    border: none;
-    outline: none;
-    color: #f2f2f2;
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-    cursor: pointer;
-}
-
-/* Versteckter Dropdown-Inhalt */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 60px; /* Unter der Navbar (60px Höhe) */
-    left: 0;   /* Gleiche X-Position wie der Button */
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    z-index: 9999; /* Damit das Dropdown über allen Inhalten liegt */
-}
-
-
-
-
-/* Links im Dropdown selbst */
-.dropdown-content a {
-    margin: 0;
-    padding: 12px 16px; /* oder anpassen, falls du es enger brauchst */
-    text-decoration: none;
-    display: block;
-    color: #000;
-    text-align: left;
-}
-
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-
-/* Dropdown wird angezeigt, wenn man über den Container hovert */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Beispielhafte Kennzeichnung der "aktuellen Seite" */
-[aria-current="page"] {
-    background-color: #4caf50;
-    color: #fff !important;
 }
