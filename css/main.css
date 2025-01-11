@@ -1,0 +1,144 @@
+/*
+   HTML und BODY sollen den gesamten Viewport einnehmen.
+*/
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    /* Hintergundbild, füllt die Seite */
+    background: url("https://mediapool.hm.edu/media/dachmarke/dm_transfer/importueberarbeitet/geb_ude_1/lothstra_e_1/dm_roter_wuerfel_ben_steinig.jpg")
+    no-repeat center center fixed;
+    background-size: cover;
+    font-family: sans-serif;
+}
+
+/*
+   Container für die 5 Kreise,
+   füllt den Bildschirm und zentriert die Kreise.
+*/
+.circle-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*
+   Basis-Stil für alle Kreise:
+   - Kreise sind 150x150px
+   - Abgerundete Ecken => Kreisform
+   - overflow: hidden => das Bild wird kreisförmig beschnitten
+   - transform: translate(-50%, -50%) => absolutes Zentrieren
+   - KEIN box-shadow, KEINE transitions
+*/
+.circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+}
+
+/*
+   Jeder Kreis bekommt ein Link mit einem Bild.
+   Das Bild füllt den Kreis aus (object-fit: cover).
+   Border für einen kleinen weißen Rand.
+*/
+.circle a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+.circle a img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+
+/*
+   Tooltip per data-name:
+   - Wir setzen ::after auf content: attr(data-name)
+   - Das Tooltip wird beim Hover angezeigt
+   - OHNE Übergangseffekte (keine transition)
+*/
+.circle[data-name]::after {
+    content: attr(data-name);
+    position: absolute;
+    bottom: calc(100% + 5px); /* Zeigt das Tooltip oberhalb des Kreises */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    font-weight: bold;
+
+    /* Standard: Unsichtbar */
+    opacity: 0;
+    pointer-events: none;
+}
+
+/*
+   Beim Hover wird das Tooltip eingeblendet
+   - Ohne Übergang (blinkt einfach an/aus)
+*/
+.circle[data-name]:hover::after {
+    opacity: 1;
+}
+
+/*
+   Anordnung der Kreise in einem unsichtbaren Kreis
+   - Hier definieren wir für jeden Kreis den Winkel.
+   - Die 5 Kreise haben jeweils 72° Abstand (360° / 5).
+*/
+.circle-1 {
+    transform: translate(-50%, -50%)
+    rotate(0deg)
+    translate(300px)
+    rotate(-0deg);
+}
+
+.circle-2 {
+    transform: translate(-50%, -50%)
+    rotate(72deg)
+    translate(300px)
+    rotate(-72deg);
+}
+
+.circle-3 {
+    transform: translate(-50%, -50%)
+    rotate(144deg)
+    translate(300px)
+    rotate(-144deg);
+}
+
+.circle-4 {
+    transform: translate(-50%, -50%)
+    rotate(216deg)
+    translate(300px)
+    rotate(-216deg);
+}
+
+.circle-5 {
+    transform: translate(-50%, -50%)
+    rotate(288deg)
+    translate(300px)
+    rotate(-288deg);
+}
