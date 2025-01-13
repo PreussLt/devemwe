@@ -1,0 +1,83 @@
+
+
+/* Gesamtes main zentrieren (optional) */
+.container {
+    width: 100%;
+    flex-direction: column; /* Elemente untereinander */
+    align-items: center;    /* Optional: Zentriere Inhalte */
+    gap: 1rem;              /* Abstand zwischen den Elementen */
+    padding: 1rem;
+    background-color: #f9f9f9; /* Hintergrundfarbe des Containers */
+    border: 1px solid #ddd;    /
+}
+
+/* Gemeinsame Klasse für die Abschnitte */
+.horizontal-section {
+    display: flex;            /* Nebeneinander */
+    justify-content: space-between;
+    align-items: center;      /* Vertikale Zentrierung */
+    margin-bottom: 2rem;      /* Abstand nach unten */
+    border: 1px solid #ccc;   /* Rahmen um den Abschnitt (optional) */
+    padding: 1rem;
+    width: 100%;
+}
+
+/* Die Container für Bild und Text nehmen jeweils ~50% ein */
+.image-container,
+.text-container {
+    flex: 1;             /* Jeder nimmt automatisch den gleichen Platz ein */
+    padding: 1rem;       /* Abstand innen */
+}
+
+/* Bild nicht zu groß werden lassen */
+.image-container img {
+    max-width: 200px;
+    height: auto;
+    display: block;      /* Verhindert unerwünschte Lücken um das Bild */
+}
+
+/* "reverse" ist die Klasse, die wir hinzufügen, um Bild rechts / Text links zu tauschen */
+.horizontal-section.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Responsives Design: Ab ca. 800px Breite sollen Bild und Text untereinander gestapelt werden */
+@media (max-width: 800px) {
+    .horizontal-section {
+        flex-direction: column;
+    }
+    .horizontal-section.reverse {
+        flex-direction: column;
+    }
+}
+
+#code-block {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border: 1px solid #61dafb;
+    width: 80%;
+    max-width: 800px;
+    overflow: hidden;
+    color: white;
+}
+
+#css-block:hover {
+    background-color: black;
+    color: white;
+    font-family: "Arial", sans-serif;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;      /* Vertikale Zentrierung */
+    margin-bottom: 2rem;      /* Abstand nach unten */
+    border: 1px solid #ccc;   /* Rahmen um den Abschnitt (optional) */
+    padding: 1rem;
+    width: 100%;
+}
+
+h1 {
+    padding-left: 35px;
+}

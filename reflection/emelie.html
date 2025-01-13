@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meine Seite – Webentwicklungskurs</title>
+
+  <!-- CSS-Datei verlinken -->
+  <link rel="stylesheet" href="../css/emelie.css" />
+  <link rel="stylesheet" href="../css/reflection.css" />
+
+  <!-- Google Fonts (Bonheur Royale & Kanit) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&display=swap"
+          rel="stylesheet"
+  />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;
+      0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;
+      1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet"
+  >
+  <script>
+
+
+    window.onload = function() {
+       const htmlCode = `<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Meine Webseite</title>
+    </head>
+    <body>
+        <h1>Hello, World!</h1>
+        <p>This is the first HTML Code</p>
+    </body>
+    </html>`;
+      // Element-Referenz
+      const typewriterElem = document.getElementById("code-block");
+
+      // Index, um den aktuellen Buchstaben zu steuern
+      let index = 0;
+      // Zeitintervall zwischen Buchstaben (ms)
+      const speed = 50;
+
+      function typeLetterByLetter() {
+        if (index < htmlCode.length) {
+          // Nächstes Zeichen anhängen
+          typewriterElem.textContent += htmlCode.charAt(index);
+          index++;
+          // Nach 'speed' Millisekunden das nächste Zeichen
+          setTimeout(typeLetterByLetter, speed);
+        }
+      }
+
+      // Animation starten
+      typeLetterByLetter();
+
+      // Abfuck Bild
+      const jsLogo = document.getElementById("jslogo");
+
+      jsLogo.addEventListener("mouseover", () => {
+        const randomX = Math.floor(Math.random() * (window.innerWidth - jsLogo.offsetWidth));
+        const randomY = Math.floor(Math.random() * (window.innerHeight - jsLogo.offsetHeight));
+        jsLogo.style.position = "absolute";
+        jsLogo.style.left = `${randomX}px`;
+        jsLogo.style.top = `${randomY}px`;
+
+      });
+
+    };
+
+
+
+  </script>
+</head>
+<body>
+
+<!-- ============================================= -->
+<!--   Hier bleibt die Navbar wie im Originalcode   -->
+<!-- ============================================= -->
+<header>
+  <!-- Fixierte Navbar -->
+  <div class="navbar">
+    <!-- Aktuelle Seite -->
+    <a href="Seite.html" aria-current="page">Aktuelle Seite</a>
+
+    <!-- Dropdown: Vorstellungsseiten -->
+    <div class="dropdown">
+      <button class="dropbtn">Unsere Vorstellungsseiten</button>
+      <div class="dropdown-content">
+        <a href="#Emmi">Emmi</a>
+        <a href="grid.html">Franzi</a>
+        <a href="#Julia">Julia</a>
+        <a href="#Lisa">Lisa</a>
+        <a href="#Tahia">Tahia</a>
+      </div>
+    </div>
+
+    <!-- Dropdown: Reflektionen -->
+    <div class="dropdown">
+      <button class="dropbtn">Unsere Reflektionen</button>
+      <div class="dropdown-content">
+        <a href="#Refemmi">Reflektion Emmi</a>
+        <a href="reflexion.html">Reflektion Franzi</a>
+        <a href="#Refjulia">Reflektion Julia</a>
+        <a href="#Reflisa">Reflektion Lisa</a>
+        <a href="#Reftahia">Reflektion Tahia</a>
+      </div>
+    </div>
+
+    <!-- Dropdown: Midjourney -->
+    <div class="dropdown">
+      <button class="dropbtn">Midjourney</button>
+      <div class="dropdown-content">
+        <a href="#Midjourney1">Midjourney 1</a>
+        <a href="#Midjourney2">Midjourney 2</a>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- ================ ENDE Navbar ================ -->
+
+<!-- Hier neu: Drei Abschnitte mit Bild & Text abwechselnd -->
+<div class="container">
+
+  <!-- 1. Abschnitt: Bild links, Text rechts -->
+  <section class="horizontal-section">
+    <div class="image-container">
+      <div id="code-block" onload="typeCode()"></div>
+    </div>
+    <div class="text-container">
+      <h2>HTML</h2>
+      <p>
+        Hier haben wir gelernt, wie man das Grundgerüst einer Webseite
+        aufbaut. Von Überschriften und Absätzen bis hin zu Links und
+        Bildern – alles basiert auf dem Grundkonzept von HTML.
+      </p>
+    </div>
+  </section>
+  <br>
+  <!-- 2. Abschnitt: Text links, Bild rechts (per "reverse") -->
+  <section class="horizontal-section reverse" id="css-block">
+    <div class="text-container">
+      <h2>CSS</h2>
+      <p>
+        Mit CSS haben wir das Design und Layout der Webseite gestaltet:
+        Farben, Schriftarten, Ränder und moderne Techniken wie Flexbox und
+        Grid, um responsive Seiten zu bauen.
+      </p>
+    </div>
+    <div class="image-container" >
+      <img src="../images/css.png" alt="CSS Logo" />
+    </div>
+  </section>
+
+  <br>
+
+  <!-- 3. Abschnitt: Bild links, Text rechts -->
+  <section class="horizontal-section">
+    <div class="image-container" >
+      <img src="../images/JS.png" alt="JavaScript Logo" id="jslogo"/>
+      <h1>Catch ME!</h1>
+    </div>
+    <div class="text-container">
+      <h2>JavaScript</h2>
+      <p>
+        Zuletzt haben wir gelernt, wie man Webseiten mit JavaScript
+        interaktiver machen kann: DOM-Manipulation, Event-Listener,
+        Animationen und vieles mehr.
+      </p>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
