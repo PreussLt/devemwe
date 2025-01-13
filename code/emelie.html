@@ -33,6 +33,32 @@
             });
         });
 
+        // Animation:
+        window.onload = function() {
+            // Text, der getippt wird
+            const text = "Emelie Brucker";
+            // Element-Referenz
+            const typewriterElem = document.getElementById("typewriter");
+
+            // Index, um den aktuellen Buchstaben zu steuern
+            let index = 0;
+            // Zeitintervall zwischen Buchstaben (ms)
+            const speed = 150;
+
+            function typeLetterByLetter() {
+                if (index < text.length) {
+                    // Nächstes Zeichen anhängen
+                    typewriterElem.textContent += text.charAt(index);
+                    index++;
+                    // Nach 'speed' Millisekunden das nächste Zeichen
+                    setTimeout(typeLetterByLetter, speed);
+                }
+            }
+
+            // Animation starten
+            typeLetterByLetter();
+        };
+
     </script>
 
 </head>
@@ -96,7 +122,7 @@
         weniger zu meinen Lieblingstätigkeiten.
     </p>
     <div class="centered-text">
-        <h1>Emelie Brucker</h1>
+        <div id="typewriter"></div>
     </div>
 </section>
 
@@ -172,7 +198,7 @@
             Kontakt. Man fühlt sich verbunden, ohne immer telefonieren oder schreiben
             zu müssen. Besonders über Snaps von meiner kleinen Schwester freue ich mich
             immer sehr.
-        </p>.</p>
+
         </div>
     </div>
 </section>
