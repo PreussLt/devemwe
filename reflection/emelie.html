@@ -33,7 +33,7 @@
     </head>
     <body>
         <h1>Hello, World!</h1>
-        <p>This is the first HTML Code</p>
+        <p>Das ist meine erster HTML Code</p>
     </body>
     </html>`;
       // Element-Referenz
@@ -57,17 +57,6 @@
       // Animation starten
       typeLetterByLetter();
 
-      // Abfuck Bild
-      const jsLogo = document.getElementById("jslogo");
-
-      jsLogo.addEventListener("mouseover", () => {
-        const randomX = Math.floor(Math.random() * (window.innerWidth - jsLogo.offsetWidth));
-        const randomY = Math.floor(Math.random() * (window.innerHeight - jsLogo.offsetHeight));
-        jsLogo.style.position = "absolute";
-        jsLogo.style.left = `${randomX}px`;
-        jsLogo.style.top = `${randomY}px`;
-
-      });
 
     };
 
@@ -124,6 +113,19 @@
 
 <!-- Hier neu: Drei Abschnitte mit Bild & Text abwechselnd -->
 <div class="container">
+  <!-- 1. Zwischen Text Abschnitt -->
+  <div class="container-image">
+    <div class="container-image-block">
+      <img  style="height: 340px" src="https://media.discordapp.net/attachments/1328781247547445269/1328781607548616794/Google_fonts_1.jpg?ex=6787f3ce&is=6786a24e&hm=0c77af09fbb11d5d0eac0b4527300fdd0685ff6a8ebdc719fe325f142ad0157f&=&format=webp&width=959&height=450" alt="Image 1">
+      <img src="https://media.discordapp.net/attachments/1328781247547445269/1328781608370700338/Google_fonts_3.jpg?ex=6787f3cf&is=6786a24f&hm=64d3e6c72805aa25a2f12d1f58f00d53efb3691e5df446125ea8504dc1f8d045&=&format=webp&width=815&height=458" alt="Image 2">
+      <img src="https://media.discordapp.net/attachments/1328781247547445269/1328782127352774666/Google_fonts_2.jpg?ex=6787f44a&is=6786a2ca&hm=0c14de52dd8205b0415749056bdeec2986d19cd0f30390bec984ea3db48f43c2&=&format=webp&width=815&height=458" alt="Image 3">
+    </div>
+    <div class="overlay-text">Mein Lieblingsthema war tatsächlich das Implementieren von Schriftarten über Google Fonts. Es
+      hat mir Spaß gemacht, damit herumzuexperimentieren, und ich fand es überraschend, wie viel
+      Charakter eine Seite durch eine (oder mehrere) Schriftarten bekommen kann. Dazu sucht man sich
+      einfach eine Schriftart auf Google Fonts aus, kopiert den angegebenen Code und fügt ihn in sein
+      eigenes HTML- und CSS-Dokument ein. Das Ganze ist auf den Bildern veranschaulicht.</div>
+  </div>
 
   <!-- 1. Abschnitt: Bild links, Text rechts -->
   <section class="horizontal-section">
@@ -131,37 +133,34 @@
       <div id="code-block" onload="typeCode()"></div>
     </div>
     <div class="text-container">
-      <h2>HTML</h2>
+      <h2>Vorkentnise</h2>
       <p>
-        Hier haben wir gelernt, wie man das Grundgerüst einer Webseite
-        aufbaut. Von Überschriften und Absätzen bis hin zu Links und
-        Bildern – alles basiert auf dem Grundkonzept von HTML.
+        In der Oberstufe hatte ich zwei Jahre lang das Wahlfach Informatik. Damals haben wir uns mit
+        Python, JavaScript und allgemein dem Thema „Netzwerke“ auseinandergesetzt. HTML hatte ich
+        ebenfalls einmal in der 6. Klasse im Informatikunterricht behandelt. Abgesehen von einem SAP
+        „Snap“-Kurs (eine Art Bausatz-Coding) lässt sich das Lernen damals jedoch als frustrierende
+        Erfahrung bezeichnen.
       </p>
     </div>
   </section>
 
-  <!-- 1. Zwischen Text Abschnitt -->
-  <div class="container-image">
-    <div class="image-container">
-      <img  style="height: 340px" src="https://media.discordapp.net/attachments/1328781247547445269/1328781607548616794/Google_fonts_1.jpg?ex=6787f3ce&is=6786a24e&hm=0c77af09fbb11d5d0eac0b4527300fdd0685ff6a8ebdc719fe325f142ad0157f&=&format=webp&width=959&height=450" alt="Image 1">
-      <img src="https://media.discordapp.net/attachments/1328781247547445269/1328781608370700338/Google_fonts_3.jpg?ex=6787f3cf&is=6786a24f&hm=64d3e6c72805aa25a2f12d1f58f00d53efb3691e5df446125ea8504dc1f8d045&=&format=webp&width=815&height=458" alt="Image 2">
-      <img src="https://media.discordapp.net/attachments/1328781247547445269/1328782127352774666/Google_fonts_2.jpg?ex=6787f44a&is=6786a2ca&hm=0c14de52dd8205b0415749056bdeec2986d19cd0f30390bec984ea3db48f43c2&=&format=webp&width=815&height=458" alt="Image 3">
-    </div>
-    <div class="overlay-text">Your Custom Text Here</div>
-  </div>
-
   <!-- 2. Abschnitt: Text links, Bild rechts (per "reverse") -->
   <section class="horizontal-section reverse" id="css-block">
+    <div class="image-container" >
+      <img src="../images/css.png" alt="CSS Logo" style="height:100%"/>
+    </div>
     <div class="text-container">
       <h2>CSS</h2>
       <p>
-        Mit CSS haben wir das Design und Layout der Webseite gestaltet:
-        Farben, Schriftarten, Ränder und moderne Techniken wie Flexbox und
-        Grid, um responsive Seiten zu bauen.
+        Ebenfalls mit etwas Frust, aber deutlich weniger Hilflosigkeit im Lernprozess als damals, kann ich
+        nun folgenden Fortschritt vorweisen: Ein grobes Verständnis von Webseiten-Developer-Tools sowie
+        deren Nutzung. Das Implementieren von Schriftarten in meinen HTML-Code. Viele weitere neue
+        Erkenntnisse in HTML und – vollkommen neu für mich – das Benutzen von CSS. Hierbei vor allem
+        das Coden von Grid- und Flexlayouts. Hilfreich waren besonders die Website
+        <a href="ee">https://www.w3schools.com/</a>, Erklärungen von KI-Programmen wie beispielsweise You, einzelne
+        YouTube-Videos und meine Freunde. Was ich von dem Gelernten allerdings direkt wieder
+        vergessen habe, ist, wie man innerhalb der cmd.exe Ordner erstellt oder Verzeichnisse ändert
       </p>
-    </div>
-    <div class="image-container" >
-      <img src="../images/css.png" alt="CSS Logo" />
     </div>
   </section>
 
@@ -170,15 +169,20 @@
   <!-- 3. Abschnitt: Bild links, Text rechts -->
   <section class="horizontal-section">
     <div class="image-container" >
-      <img src="../images/JS.png" alt="JavaScript Logo" id="jslogo"/>
-      <h1>Catch ME!</h1>
+
+      <h1>Bild einfügen</h1>
     </div>
     <div class="text-container">
-      <h2>JavaScript</h2>
+      <h2>Feedback</h2>
       <p>
-        Zuletzt haben wir gelernt, wie man Webseiten mit JavaScript
-        interaktiver machen kann: DOM-Manipulation, Event-Listener,
-        Animationen und vieles mehr.
+        Eine Sache, die ich sehr hilfreich gefunden hätte, wäre eine Präsentation gewesen, in der eine
+        Sammlung von verschiedenen Dingen gezeigt wird, die man auf Webseiten mit HTML und CSS
+        realisieren kann. Beispielsweise die Änderung einer Farbe beim Überfahren eines Feldes mit der
+        Maus, Bilder oder Text, der sich aktiv auf der Webseite bewegt, Filter, die auf Bilder angewendet
+        werden können, und vieles mehr. Dabei geht es mir weniger um die Erklärung, wie man das Ganze
+        genau codet und umsetzt, sondern einfach darum, die Möglichkeiten aufzuzeigen. So hat man mehr
+        Ideen im Kopf und einen größeren Überblick.
+        Abegesehen davon, habe ich nichts in dem Modul vermisst.
       </p>
     </div>
   </section>

@@ -6,9 +6,7 @@
     flex-direction: column; /* Elemente untereinander */
     align-items: center;    /* Optional: Zentriere Inhalte */
     gap: 1rem;              /* Abstand zwischen den Elementen */
-    padding: 1rem;
-    background-color: #f9f9f9; /* Hintergrundfarbe des Containers */
-    border: 1px solid #ddd;    /
+    background-color: rgb(148, 219, 164); /* Hintergrundfarbe des Containers */
 }
 
 /* Gemeinsame Klasse für die Abschnitte */
@@ -17,7 +15,6 @@
     justify-content: space-between;
     align-items: center;      /* Vertikale Zentrierung */
     margin-bottom: 2rem;      /* Abstand nach unten */
-    border: 1px solid #ccc;   /* Rahmen um den Abschnitt (optional) */
     padding: 1rem;
     width: 100%;
 }
@@ -26,14 +23,20 @@
 .image-container,
 .text-container {
     flex: 1;             /* Jeder nimmt automatisch den gleichen Platz ein */
-    padding: 1rem;       /* Abstand innen */
+    padding: 1rem; /* Abstand innen */
+
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
 }
 
 /* Bild nicht zu groß werden lassen */
 .image-container img {
-    max-width: 200px;
+    max-width: 100px;
     height: auto;
-    display: block;      /* Verhindert unerwünschte Lücken um das Bild */
+    display: block; /* Verhindert unerwünschte Lücken um das Bild */
 }
 
 /* "reverse" ist die Klasse, die wir hinzufügen, um Bild rechts / Text links zu tauschen */
@@ -66,14 +69,13 @@
 }
 
 #css-block:hover {
-    background-color: black;
+    background-color: #366436;
     color: white;
     font-family: "Arial", sans-serif;
     flex-direction: column-reverse;
     justify-content: space-between;
     align-items: center;      /* Vertikale Zentrierung */
-    margin-bottom: 2rem;      /* Abstand nach unten */
-    border: 1px solid #ccc;   /* Rahmen um den Abschnitt (optional) */
+    margin-bottom: 2rem;      /* Abstand nach unten */ /* Rahmen um den Abschnitt (optional) */
     padding: 1rem;
     width: 100%;
 }
@@ -82,17 +84,19 @@ h1 {
     padding-left: 35px;
 }
 
-.image-container {
+.container-image-block {
     display: flex;
     position: relative;
     justify-content: center;
     align-items: center;
+    padding-top: 0.5rem;
 
 }
 
-.image-container img {
+.container-image-block img {
     width: 100%;
-    max-width: 33%;
+    height: 340px;
+    max-width: 34%;
     margin: 0px;
 
 
@@ -100,12 +104,9 @@ h1 {
 
 .overlay-text {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgb(148, 219, 164);
     padding: 10px 20px;
-    border-radius: 10px;
-    font-size: 1.2em;
     text-align: center;
-    font-family: Arial, sans-serif;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -117,4 +118,8 @@ h1 {
     align-items: center;
     margin: 0;
     height: 300px;
+    margin-bottom: 10px;
 }
+
+
+
