@@ -10,6 +10,7 @@
     background-color: var(--accent2-color);
     display: flex;
     align-items: center;
+    justify-content: center;
     z-index: 9999; /* Über anderen Elementen */
     height: 60px;  /* Höhe der Navbar (s. body-padding-top) */
 }
